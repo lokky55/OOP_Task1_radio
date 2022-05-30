@@ -41,7 +41,9 @@ public class Radio {
         int newCurrentStation;
         if (currentStation < 9) {
             newCurrentStation = currentStation + 1;
-        } else newCurrentStation = 0;
+        } else {
+            newCurrentStation = 0;
+        }
         setCurrentStation(newCurrentStation);
     }
 
@@ -49,7 +51,9 @@ public class Radio {
         int newCurrentStation;
         if (currentStation > 0) {
             newCurrentStation = currentStation - 1;
-        } else newCurrentStation = 9;
+        } else {
+            newCurrentStation = 9;
+        }
         setCurrentStation(newCurrentStation);
     }
 
