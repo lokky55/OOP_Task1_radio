@@ -1,5 +1,8 @@
 package ru.netology.domain;
 
+import lombok.Data;
+
+@Data
 public class Radio {
 
     private int currentStation;      // задаем приватное поле для станции
@@ -34,17 +37,17 @@ public class Radio {
         this.stationsQuantity = 10;
     }
 
-    public int getQuantityOfStations() {  // создадим геттер для вызова кол-ва радиостанций
-        return stationsQuantity;
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
+//    public int getQuantityOfStations() {  // создадим геттер для вызова кол-ва радиостанций
+//        return stationsQuantity;
+//    }
+//
+//    public int getCurrentStation() {
+//        return currentStation;
+//    }
+//
+//    public int getCurrentVolume() {
+//        return currentVolume;
+//    }
 
     public void setAnyStation(int newStation) {  // выставление номера станции с пульта
         setCurrentStation(newStation);

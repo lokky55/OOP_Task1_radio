@@ -10,7 +10,7 @@ public class RadioTest {
     @Test
     void setQuantityOfStations() {       // создадим тест для проверки задания необходимо кол-ва радиостанций
         Radio radio = new Radio(10);
-        int actual = radio.getQuantityOfStations();
+        int actual = radio.getStationsQuantity();
         int expected = 10;
         Assertions.assertEquals(expected, actual);
     }
