@@ -1,15 +1,19 @@
 package ru.netology.domain;
 
+import lombok.Data;
+
+@Data
 public class Radio {
 
     private int currentStation;      // задаем приватное поле для станции
     private int currentVolume;       // задаем приватное поле для громкости
+    private int stationsQuantity;    // задаем поле для количества радиостанций
 
     public void setCurrentStation(int currentStation) {  // сеттер с проверкой на допустимость номера станции
         if (currentStation < 0) {
             return;
         }
-        if (currentStation > 9) {
+        if (currentStation >= stationsQuantity) {
             return;
         }
         this.currentStation = currentStation;
@@ -19,27 +23,39 @@ public class Radio {
         if (currentVolume < 0) {
             return;
         }
-        if (currentVolume > 10) {
+        if (currentVolume > 100) {
             return;
         }
         this.currentVolume = currentVolume;
     }
 
-    public int getCurrentStation() {
-        return currentStation;
+    public Radio(int stationsQuantity) {   // создаем констурктор, принимающий параметром желаемое кол-во радиостанций и сохраняющего это значение у себя в поле
+        this.stationsQuantity = stationsQuantity;
     }
 
-    public int getCurrentVolume() {
-        return currentVolume;
+    public Radio () {                     // создаем конструктор без параметров где указано кол-во радиостанций по умолчанию
+        this.stationsQuantity = 10;
     }
 
-    public void setAnyStation(int newStation) {  // метод проверки корректности номера вводимой станции - пункт 4 условия задачи
+//    public int getQuantityOfStations() {  // создадим геттер для вызова кол-ва радиостанций
+//        return stationsQuantity;
+//    }
+//
+//    public int getCurrentStation() {
+//        return currentStation;
+//    }
+//
+//    public int getCurrentVolume() {
+//        return currentVolume;
+//    }
+
+    public void setAnyStation(int newStation) {  // выставление номера станции с пульта
         setCurrentStation(newStation);
     }
 
     public void nextStation() {           // метод переключения на следующую станцию
         int newCurrentStation;
-        if (currentStation < 9) {
+        if (currentStation < stationsQuantity - 1) {
             newCurrentStation = currentStation + 1;
         } else {
             newCurrentStation = 0;
@@ -52,7 +68,7 @@ public class Radio {
         if (currentStation > 0) {
             newCurrentStation = currentStation - 1;
         } else {
-            newCurrentStation = 9;
+            newCurrentStation = stationsQuantity - 1;
         }
         setCurrentStation(newCurrentStation);
     }
