@@ -4,13 +4,13 @@ public class Radio {
 
     private int currentStation;      // задаем приватное поле для станции
     private int currentVolume;       // задаем приватное поле для громкости
-    private int stationsQuantity;    // инициализируем поле для количества радиостанций
+    private int stationsQuantity;    // задаем поле для количества радиостанций
 
     public void setCurrentStation(int currentStation) {  // сеттер с проверкой на допустимость номера станции
         if (currentStation < 0) {
             return;
         }
-        if (currentStation > stationsQuantity - 1) {
+        if (currentStation >= stationsQuantity) {
             return;
         }
         this.currentStation = currentStation;
