@@ -6,6 +6,14 @@ public class Radio {
     private int currentVolume;       // задаем приватное поле для громкости
     private int stationsQuantity;    // задаем поле для количества радиостанций
 
+    public Radio(int stationsQuantity) {   // создаем констурктор (экземпляр класса), принимающий параметром желаемое кол-во радиостанций и сохраняющего это значение у себя в поле
+        this.stationsQuantity = stationsQuantity;
+    }
+
+    public Radio () {                     // создаем конструктор без параметров где указано кол-во радиостанций по умолчанию
+        this.stationsQuantity = 10;
+    }
+
     public void setCurrentStation(int currentStation) {  // сеттер с проверкой на допустимость номера станции
         if (currentStation < 0) {
             return;
@@ -26,15 +34,11 @@ public class Radio {
         this.currentVolume = currentVolume;
     }
 
-    public Radio(int stationsQuantity) {   // создаем констурктор, принимающий параметром желаемое кол-во радиостанций и сохраняющего это значение у себя в поле
-        this.stationsQuantity = stationsQuantity;
+    public void setAnyStation(int newStation) {  // сеттер выставления номера станции с пульта
+        setCurrentStation(newStation);
     }
 
-    public Radio () {                     // создаем конструктор без параметров где указано кол-во радиостанций по умолчанию
-        this.stationsQuantity = 10;
-    }
-
-    public int getQuantityOfStations() {  // создадим геттер для вызова кол-ва радиостанций
+    public int getQuantityOfStations() {  // Создадим геттер для вызова кол-ва радиостанций
         return stationsQuantity;
     }
 
@@ -44,10 +48,6 @@ public class Radio {
 
     public int getCurrentVolume() {
         return currentVolume;
-    }
-
-    public void setAnyStation(int newStation) {  // выставление номера станции с пульта
-        setCurrentStation(newStation);
     }
 
     public void nextStation() {           // метод переключения на следующую станцию
